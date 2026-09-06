@@ -1,0 +1,229 @@
+/* ============================================================
+   Kissa (किस्सा) — a handwritten notebook for stories
+   Design concept: the ruled Indian school "copy" — pale blue
+   ruled lines, a red margin line, ink-blue headings, and a
+   handwriting display face for titles.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --paper: #faf6ec;
+  --paper-edge: #f1ead9;
+  --rule-blue: #c9d8e8;
+  --margin-red: #b75b54;
+  --ink: #2a2822;
+  --ink-soft: #52504a;
+  --ink-blue: #1f3a5f;
+  --gold: #a67c3d;
+  --max-width: 720px;
+  --line-height-rule: 2.15em;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper-edge);
+  color: var(--ink);
+  font-family: 'Noto Serif Devanagari', 'Noto Serif', Georgia, serif;
+  font-size: 18px;
+  line-height: var(--line-height-rule);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(31, 58, 95, 0.35);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+a:hover, a:focus {
+  border-color: var(--margin-red);
+  color: var(--margin-red);
+}
+a:focus-visible {
+  outline: 2px solid var(--ink-blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3, .hand {
+  font-family: 'Kalam', 'Noto Serif Devanagari', cursive;
+  font-weight: 700;
+  color: var(--ink-blue);
+  line-height: 1.25;
+  margin: 0 0 0.4em;
+}
+
+/* ---------- Site header ---------- */
+
+.site-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.6rem 1.5rem 1.2rem;
+}
+
+.site-header .brand {
+  display: inline-block;
+  font-size: 2.6rem;
+  transform: rotate(-1deg);
+  animation: ink-in 0.7s ease-out both;
+}
+
+.site-header .tagline {
+  margin-top: 0.3rem;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.site-nav {
+  margin-top: 1rem;
+  font-family: 'Kalam', cursive;
+  font-size: 1.05rem;
+}
+.site-nav a {
+  margin-right: 1.4rem;
+  border-bottom-color: transparent;
+}
+.site-nav a:hover { border-color: var(--margin-red); }
+
+@keyframes ink-in {
+  from { opacity: 0; letter-spacing: 0.12em; }
+  to   { opacity: 1; letter-spacing: normal; }
+}
+
+/* ---------- The notebook page ---------- */
+
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto 3rem;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--line-height-rule) - 1px),
+      var(--rule-blue) calc(var(--line-height-rule) - 1px),
+      var(--rule-blue) var(--line-height-rule)
+    );
+  background-position: 0 0.2em;
+  border-left: 3px solid var(--margin-red);
+  padding: 0.5rem 1.6rem 2rem 2.1rem;
+  position: relative;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+/* Contents / index list on the home page */
+
+.contents-label {
+  font-family: 'Kalam', cursive;
+  font-size: 0.95rem;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.story-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.story-list li {
+  padding: 0.15em 0;
+}
+
+.story-list .story-title {
+  font-family: 'Kalam', cursive;
+  font-size: 1.25rem;
+  border-bottom: none;
+}
+
+.story-list .meta {
+  display: block;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-top: -0.2em;
+}
+
+.story-list .excerpt {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* Story reading page */
+
+.story-meta {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.story-body p {
+  margin: 0 0 var(--line-height-rule);
+  text-align: left;
+}
+
+.story-body p:first-of-type::first-letter {
+  font-family: 'Kalam', cursive;
+  font-size: 2.4em;
+  color: var(--margin-red);
+  float: left;
+  line-height: 0.8;
+  padding-right: 0.08em;
+  padding-top: 0.08em;
+}
+
+.story-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  font-family: 'Kalam', cursive;
+  font-size: 1rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* About page */
+
+.about-body p { margin: 0 0 var(--line-height-rule); }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  body { font-size: 16.5px; }
+  .site-header .brand { font-size: 2.1rem; }
+  .page { padding: 0.5rem 1rem 1.6rem 1.4rem; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .site-header .brand { animation: none; }
+}
