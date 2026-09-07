@@ -227,3 +227,37 @@ h1, h2, h3, .hand {
 @media (prefers-reduced-motion: reduce) {
   .site-header .brand { animation: none; }
 }
+
+/* ---------- Dark mode ---------- */
+
+body, .site-header .brand, .story-body p, .about-body p {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --paper: #1e1c18;
+  --paper-edge: #171512;
+  --rule-blue: #38465a;
+  --margin-red: #a15650;
+  --ink: #ece7da;
+  --ink-soft: #b9b2a1;
+  --ink-blue: #8fb0da;
+  --gold: #cf9f5f;
+}
+
+.theme-toggle {
+  font-family: 'Kalam', cursive;
+  font-size: 0.95rem;
+  background: transparent;
+  border: 1px solid var(--ink-blue);
+  color: var(--ink-blue);
+  border-radius: 4px;
+  padding: 0.25em 0.7em;
+  cursor: pointer;
+  margin-left: 0.4rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.theme-toggle:hover {
+  background: var(--ink-blue);
+  color: var(--paper);
+}
