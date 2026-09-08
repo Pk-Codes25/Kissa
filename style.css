@@ -261,3 +261,51 @@ body, .site-header .brand, .story-body p, .about-body p {
   background: var(--ink-blue);
   color: var(--paper);
 }
+
+
+/* ---------- Story reactions (like/dislike) ---------- */
+
+.story-reaction {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--rule-blue);
+  text-align: center;
+}
+
+.reaction-label {
+  font-family: 'Kalam', cursive;
+  color: var(--ink-blue);
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.reaction-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.reaction-btn {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.1rem;
+  background: transparent;
+  border: 1px solid var(--ink-blue);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.reaction-btn:hover:not(:disabled) {
+  background: var(--rule-blue);
+  transform: translateY(-1px);
+}
+.reaction-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.reaction-btn .count {
+  font-family: 'Kalam', cursive;
+  color: var(--margin-red);
+  margin-left: 0.2em;
+}
